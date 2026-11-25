@@ -6,6 +6,17 @@ DOSYA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "kelimeler.json
 SORU_SAYISI = 5
 
 
+def kucult(metin):
+    return metin.strip().replace("I", "ı").replace("İ", "i").lower()
+
+
+def baslik():
+    print("=" * 40)
+    print("        KELİME DEFTERİ")
+    print("   İngilizce kelime öğrenme oyunu")
+    print("=" * 40)
+
+
 def yukle():
     if not os.path.exists(DOSYA):
         return {}
@@ -20,7 +31,7 @@ def kaydet(defter):
 
 def kelime_ekle(defter):
     kelime = input("İngilizce kelime: ").strip().lower()
-    anlam = input("Türkçe anlamı: ").strip().lower()
+    anlam = kucult(input("Türkçe anlamı: "))
     if not kelime or not anlam:
         print("Kelime ve anlam boş olamaz.")
         return
@@ -49,7 +60,7 @@ def oyun(defter):
     dogru = 0
     print(f"\n--- Anlam bulma oyunu ({SORU_SAYISI} soru) ---")
     for i, kelime in enumerate(sorular, 1):
-        cevap = input(f"{i}) '{kelime}' kelimesinin anlamı nedir? ").strip().lower()
+        cevap = kucult(input(f"{i}) '{kelime}' kelimesinin anlamı nedir? "))
         if cevap == defter[kelime]:
             print("Doğru!")
             dogru += 1
@@ -61,8 +72,10 @@ def oyun(defter):
 
 def main():
     defter = yukle()
+    baslik()
+    print(f"Defterde {len(defter)} kelime var.")
     while True:
-        print("\n=== KELİME DEFTERİ ===")
+        print("\n--- MENÜ ---")
         print("1) Kelime ekle")
         print("2) Kelimeleri listele")
         print("3) Oyun oyna")
@@ -83,4 +96,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except (KeyboardInterrupt, EOFError):
+        print("\nGörüşmek üzere!")

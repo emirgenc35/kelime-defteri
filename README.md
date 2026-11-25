@@ -29,7 +29,7 @@ python3 kelime_defteri.py
 4. **Beklenen:** Listede `apple - elma` görünür (kelimeler `kelimeler.json` dosyasında saklanır).
 
 ### 2. Anlam bulma oyunu
-Depoda hazır 8 örnek kelime var, hemen oynanabilir.
+Depoda hazır 100 örnek kelime var, her oyunda rastgele 5 tanesi sorulur.
 1. Programı çalıştırın, menüden `3` seçin.
 2. Sorulan 5 kelimenin Türkçe anlamını yazın (örn. `book` → `kitap`).
 3. **Beklenen:** Her cevaptan sonra doğru/yanlış yazar, sonunda `Skor: x/5` gösterilir. Büyük/küçük harf fark etmez.
