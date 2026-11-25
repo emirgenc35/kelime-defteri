@@ -20,13 +20,15 @@ cd kelime-defteri
 python3 kelime_defteri.py
 ```
 
+Windows'ta `python3` yerine `python` yazın.
+
 ## Özellikleri deneme
 
 ### 1. Kelime ekleme ve listeleme
 1. Programı çalıştırın, menüden `1` seçin.
-2. Kelime olarak `apple`, anlam olarak `elma` yazın.
+2. Kelime olarak `orange`, anlam olarak `portakal` yazın.
 3. `0` ile çıkın, programı tekrar açın ve `2` seçin.
-4. **Beklenen:** Listede `apple - elma` görünür (kelimeler `kelimeler.json` dosyasında saklanır).
+4. **Beklenen:** Listede `orange - portakal` görünür (kelimeler `kelimeler.json` dosyasında saklanır).
 
 ### 2. Anlam bulma oyunu
 Depoda hazır 100 örnek kelime var, her oyunda rastgele 5 tanesi sorulur.
