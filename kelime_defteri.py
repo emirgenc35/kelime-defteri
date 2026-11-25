@@ -1,13 +1,12 @@
-"""Kelime Defteri: İngilizce kelimeleri kaydet, listele ve kendini test et."""
-
 import json
 import os
+import random
 
 DOSYA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "kelimeler.json")
+SORU_SAYISI = 5
 
 
 def yukle():
-    """Kelimeleri dosyadan okur. Dosya yoksa boş defter döner."""
     if not os.path.exists(DOSYA):
         return {}
     with open(DOSYA, encoding="utf-8") as f:
@@ -15,7 +14,6 @@ def yukle():
 
 
 def kaydet(defter):
-    """Defteri dosyaya yazar."""
     with open(DOSYA, "w", encoding="utf-8") as f:
         json.dump(defter, f, ensure_ascii=False, indent=2)
 
@@ -42,12 +40,32 @@ def kelimeleri_listele(defter):
         print(f"  {kelime} - {anlam}")
 
 
+def oyun(defter):
+    if len(defter) < SORU_SAYISI:
+        print(f"Oyun için en az {SORU_SAYISI} kelime gerekli. Şu an {len(defter)} kelime var.")
+        return
+
+    sorular = random.sample(list(defter.keys()), SORU_SAYISI)
+    dogru = 0
+    print(f"\n--- Anlam bulma oyunu ({SORU_SAYISI} soru) ---")
+    for i, kelime in enumerate(sorular, 1):
+        cevap = input(f"{i}) '{kelime}' kelimesinin anlamı nedir? ").strip().lower()
+        if cevap == defter[kelime]:
+            print("Doğru!")
+            dogru += 1
+        else:
+            print(f"Yanlış. Doğru cevap: {defter[kelime]}")
+
+    print(f"\nSkor: {dogru}/{SORU_SAYISI}")
+
+
 def main():
     defter = yukle()
     while True:
         print("\n=== KELİME DEFTERİ ===")
         print("1) Kelime ekle")
         print("2) Kelimeleri listele")
+        print("3) Oyun oyna")
         print("0) Çıkış")
         secim = input("Seçiminiz: ").strip()
 
@@ -55,6 +73,8 @@ def main():
             kelime_ekle(defter)
         elif secim == "2":
             kelimeleri_listele(defter)
+        elif secim == "3":
+            oyun(defter)
         elif secim == "0":
             print("Görüşmek üzere!")
             break
