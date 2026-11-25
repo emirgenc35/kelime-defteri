@@ -8,7 +8,7 @@
 
 ## Proje panosu
 
-Pano: _(link eklenecek)_
+Pano: https://github.com/users/emirgenc35/projects/3
 
 ## Çalıştırma
 
@@ -22,4 +22,8 @@ python3 kelime_defteri.py
 
 ## Özellikleri deneme
 
-_(Geliştirildikçe eklenecek)_
+### 1. Kelime ekleme ve listeleme
+1. Programı çalıştırın, menüden `1` seçin.
+2. Kelime olarak `apple`, anlam olarak `elma` yazın.
+3. `0` ile çıkın, programı tekrar açın ve `2` seçin.
+4. **Beklenen:** Listede `apple - elma` görünür (kelimeler `kelimeler.json` dosyasında saklanır).
